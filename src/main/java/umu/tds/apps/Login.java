@@ -1,11 +1,14 @@
 package umu.tds.apps;
 
-import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import java.awt.BorderLayout;
+import java.awt.Font;
 
 public class Login {
     public static void showLoginWindow() {
@@ -17,12 +20,20 @@ public class Login {
 
     private static JFrame createLoginFrame() { 
         JFrame frame = new JFrame();
+        JPanel titlePanel = new JPanel();
         JPanel dataPanel = new JPanel();
+        JPanel buttonsPanel = new JPanel();
 
         setupFrame(frame);
-        setupDataPanel(dataPanel);
 
-        frame.add(dataPanel);
+        setupTitlePanel(titlePanel);
+        frame.add(titlePanel, BorderLayout.NORTH);
+
+        setupDataPanel(dataPanel);
+        frame.add(dataPanel, BorderLayout.CENTER);
+
+        setupButtonsPanel(buttonsPanel);
+        frame.add(buttonsPanel, BorderLayout.SOUTH);
 
         return frame;
     }
@@ -33,14 +44,35 @@ public class Login {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private static void setupDataPanel(JPanel dataPanel) {
-        dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
+    private static void setupTitlePanel(JPanel titlePanel) {
+        JLabel title = new JLabel();
+        title.setText("Login");
+        title.setFont(new Font("Roboto", Font.BOLD, 30));
+        titlePanel.add(title);
+    }
 
+    private static void setupDataPanel(JPanel dataPanel) {
         JPanel phoneNumberPanel = createPhoneNumberPanel();
         JPanel passwordPanel = createPasswordPanel();
 
-        dataPanel.add(phoneNumberPanel);
-        dataPanel.add(passwordPanel);
+        dataPanel.add(phoneNumberPanel, BorderLayout.CENTER);
+        dataPanel.add(passwordPanel, BorderLayout.CENTER);
+    }
+
+    private static void setupButtonsPanel(JPanel buttonsPanel) {
+        JButton signIn = new JButton("Sign In");
+        JButton confirm = new JButton("Confirm");
+
+        signIn.addActionListener(ev -> {
+            JOptionPane.showMessageDialog(buttonsPanel, "TODO: Sign In");
+        });
+
+        confirm.addActionListener(ev -> {
+            JOptionPane.showMessageDialog(buttonsPanel, "TODO: Confirm");
+        });
+
+        buttonsPanel.add(signIn);
+        buttonsPanel.add(confirm);
     }
 
     private static JPanel createPhoneNumberPanel() {
@@ -55,11 +87,11 @@ public class Login {
         JPanel panel = new JPanel();
 
         JLabel label = new JLabel(labelText);
-        panel.add(label);
+        panel.add(label, BorderLayout.WEST);
 
         JTextField textField = new JTextField();
         textField.setColumns(20);
-        panel.add(textField);
+        panel.add(textField, BorderLayout.EAST);
 
         return panel;
     }
