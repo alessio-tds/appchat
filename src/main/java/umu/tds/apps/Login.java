@@ -11,6 +11,18 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 
 public class Login {
+    private static int frameWidth = 400;
+    private static int frameHeight = 300;
+
+    private static String titleText = "Login";
+    private static String signInButtonText = "Sign In";
+    private static String confirmButtonText = "Confirm";
+    private static String phoneNumberLabelText = "Phone Number";
+    private static String passwordLabelText = "Password";
+    private static Font font = new Font("Roboto", Font.BOLD, 30);
+
+    private static int closeOperation = JFrame.EXIT_ON_CLOSE;
+
     public static void showLoginWindow() {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = createLoginFrame();
@@ -39,15 +51,15 @@ public class Login {
     }
 
     private static void setupFrame(JFrame frame) {
-        frame.setTitle("AppChat");
-        frame.setSize(400, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle(App.name);
+        frame.setSize(frameWidth, frameHeight);
+        frame.setDefaultCloseOperation(closeOperation);
     }
 
     private static void setupTitlePanel(JPanel titlePanel) {
         JLabel title = new JLabel();
-        title.setText("Login");
-        title.setFont(new Font("Roboto", Font.BOLD, 30));
+        title.setText(titleText);
+        title.setFont(font);
         titlePanel.add(title);
     }
 
@@ -60,8 +72,8 @@ public class Login {
     }
 
     private static void setupButtonsPanel(JPanel buttonsPanel) {
-        JButton signIn = new JButton("Sign In");
-        JButton confirm = new JButton("Confirm");
+        JButton signIn = new JButton(signInButtonText);
+        JButton confirm = new JButton(confirmButtonText);
 
         signIn.addActionListener(ev -> {
             JOptionPane.showMessageDialog(buttonsPanel, "TODO: Sign In");
@@ -76,11 +88,11 @@ public class Login {
     }
 
     private static JPanel createPhoneNumberPanel() {
-        return createDataPanel("Phone Number");
+        return createDataPanel(phoneNumberLabelText);
     }
 
     private static JPanel createPasswordPanel() {
-        return createDataPanel("Password");
+        return createDataPanel(passwordLabelText);
     }
 
     private static JPanel createDataPanel(String labelText) {
