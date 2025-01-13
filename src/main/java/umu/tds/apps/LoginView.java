@@ -120,7 +120,7 @@ public class LoginView {
         return phoneNumberField.getText();
     }
 
-    public String getPasssord() {
+    public String getPassword() {
         return passwordField.getText();
     }
 

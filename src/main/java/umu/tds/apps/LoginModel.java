@@ -1,37 +1,18 @@
 package umu.tds.apps;
 
 public class LoginModel {
-    public boolean authenticateUser(String phoneNumber, String password) {
-        if (!isPhoneNumberValid(phoneNumber)) {
-            // TODO
-            return false;
-        }
+    public boolean isPhoneNumberValid(String phoneNumber) {
+        return phoneNumber != null && phoneNumber.matches("^\\+?[0-9. ()-]{7,15}$");  
+    }
 
-        if (!isPasswordValid(password)) {
-            // TODO
-            return false;
-        }
-
-        if (!isPasswordCorrect(password)) {
-            // TODO
-            return false;
-        }
-
+    public boolean isPasswordValid(String password) {
+        // TODO: Add a check (minimum number of characters, special characters, ...)
         return true;
     }
 
-    private boolean isPhoneNumberValid(String phoneNumber) {
-        // TODO
-        return false;
-    }
-
-    private boolean isPasswordValid(String password) {
-        // TODO
-        return false;
-    }
-
-    private boolean isPasswordCorrect(String password) {
-        // TODO
-        return false;
+    public boolean isPasswordCorrect(String phoneNumber, String password) {
+        UserRepository repository = UserRepository.getInstance();
+        User user = repository.getUserByPhoneNumber(phoneNumber);
+        return user != null && user.getPassword() == password;
     }
 }
