@@ -3,8 +3,8 @@ package umu.tds.apps;
 import java.awt.event.ActionListener;
 
 public class LoginController {
-    LoginModel model;
-    LoginView view;
+    private LoginModel model;
+    private LoginView view;
 
     public LoginController() {
         model = new LoginModel();
@@ -13,7 +13,8 @@ public class LoginController {
 
     public void run() {
         view.getSignInButton().addActionListener(ev -> {
-            // TODO
+            SigninController signin = new SigninController();
+            signin.run();
         });
 
         view.getConfirmButton().addActionListener(
