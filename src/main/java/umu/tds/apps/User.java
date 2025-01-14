@@ -21,7 +21,7 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.image = image;
         this.greeting = greeting;
-        this.contacts = new ArrayList<>();
+        this.chats = new ArrayList<>();
     }
 
     public String getName() {
