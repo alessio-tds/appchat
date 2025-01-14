@@ -15,11 +15,13 @@ public class LoginController {
         view.getSignInButton().addActionListener(ev -> {
             SigninController signin = new SigninController();
             signin.run();
+            view.disposeFrame();
         });
 
-        view.getConfirmButton().addActionListener(
-            authenticateUser(model, view)
-        );
+        view.getConfirmButton().addActionListener(ev -> {
+            authenticateUser(model, view);
+            view.disposeFrame();
+        });
 
         view.showLoginWindow();
     }

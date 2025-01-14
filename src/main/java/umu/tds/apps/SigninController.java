@@ -16,6 +16,7 @@ public class SigninController {
         view.getCancelButton().addActionListener(ev -> {
             LoginController login = new LoginController();
             login.run();
+            view.disposeFrame();
         });
 
         view.getConfirmButton().addActionListener(ev -> {

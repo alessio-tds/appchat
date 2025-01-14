@@ -116,6 +116,10 @@ public class LoginView {
         return panel;
     }
 
+    public void disposeFrame() {
+        frame.dispose();
+    }
+
     public String getPhoneNumber() {
         return phoneNumberField.getText();
     }

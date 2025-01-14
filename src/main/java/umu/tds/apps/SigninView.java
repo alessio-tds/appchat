@@ -142,6 +142,10 @@ public class SigninView {
         buttonsPanel.add(confirmButton);
     }
 
+    public void disposeFrame() {
+        frame.dispose();
+    }
+
     public String getFirstName() {
         return firstNameField.getText();
     }
