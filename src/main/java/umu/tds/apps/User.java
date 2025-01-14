@@ -1,7 +1,9 @@
 package umu.tds.apps;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class User {
     private String name;
@@ -10,6 +12,7 @@ public class User {
     private Optional<LocalDate> dateOfBirth;
     private Optional<String> image;
     private String greeting;
+    private ArrayList<Chat> chats;
 
     public User(String name, String phoneNumber, String password, Optional<LocalDate> dateOfBirth, Optional<String> image, String greeting) {
         this.name = name;
@@ -18,6 +21,7 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.image = image;
         this.greeting = greeting;
+        this.contacts = new ArrayList<>();
     }
 
     public String getName() {
@@ -66,5 +70,23 @@ public class User {
 
     public void setGreeting(String newGreeting) {
         greeting = newGreeting;
+    }
+
+    public ArrayList<Chat> getChats() {
+        return chats;
+    }
+
+    public ArrayList<Contact> getContacts() {
+        return chats.stream()
+            .filter(chat -> chat instanceof Contact)
+            .map(chat -> (Contact) chat)
+            .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public ArrayList<Group> getGroups() {
+        return chats.stream()
+            .filter(chat -> chat instanceof Group)
+            .map(chat -> (Group) chat)
+            .collect(Collectors.toCollection(ArrayList::new));
     }
 }
