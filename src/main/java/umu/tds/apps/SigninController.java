@@ -48,6 +48,7 @@ public class SigninController {
                 // Popup: user successfully created!
                 LoginController login = new LoginController();
                 login.run();
+                view.disposeFrame();
             }
         });
 
