@@ -13,6 +13,6 @@ public class LoginModel {
     public boolean isPasswordCorrect(String phoneNumber, String password) {
         UserRepository repository = UserRepository.getInstance();
         User user = repository.getUserByPhoneNumber(phoneNumber);
-        return user != null && user.getPassword() == password;
+        return user != null && user.getPassword().equals(password);
     }
 }
