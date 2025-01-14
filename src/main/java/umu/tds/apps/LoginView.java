@@ -64,6 +64,7 @@ public class LoginView {
     private void setupFrame() {
         frame.setTitle(App.name);
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(CLOSE_OPERATION);
     }
 
