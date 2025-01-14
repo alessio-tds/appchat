@@ -12,7 +12,9 @@ public class User {
     private Optional<LocalDate> dateOfBirth;
     private Optional<String> image;
     private String greeting;
+
     private ArrayList<Chat> chats;
+    private ArrayList<Message> messages;
 
     public User(String name, String phoneNumber, String password, Optional<LocalDate> dateOfBirth, Optional<String> image, String greeting) {
         this.name = name;
@@ -87,6 +89,20 @@ public class User {
         return chats.stream()
             .filter(chat -> chat instanceof Group)
             .map(chat -> (Group) chat)
+            .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public ArrayList<Message> getMessages() {
+        return messages;
+    }
+
+    public void addMessage(Message message) {
+        messages.add(message);
+    }
+
+    public ArrayList<Message> getConversation(User user) {
+        return messages.stream()
+            .filter(message -> message.getReceiver() == user || message.getSender() == user)
             .collect(Collectors.toCollection(ArrayList::new));
     }
 }
