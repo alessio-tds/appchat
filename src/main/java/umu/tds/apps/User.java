@@ -24,6 +24,7 @@ public class User {
         this.image = image;
         this.greeting = greeting;
         this.chats = new ArrayList<>();
+        this.messages = new ArrayList<>();
     }
 
     public String getName() {
@@ -78,6 +79,19 @@ public class User {
         return chats;
     }
 
+    public void updateChats(Message message) {
+        User sender = message.getSender();
+        User receiver = message.getReceiver();
+
+        if (sender.getPhoneNumber() != phoneNumber) {
+            Chat newChat = new Contact(sender);
+            chats.add(newChat);
+        } else if (receiver.getPhoneNumber() != phoneNumber) {
+            Chat newChat = new Contact(receiver);
+            chats.add(newChat);
+        }
+    }
+
     public ArrayList<Contact> getContacts() {
         return chats.stream()
             .filter(chat -> chat instanceof Contact)
@@ -98,6 +112,7 @@ public class User {
 
     public void addMessage(Message message) {
         messages.add(message);
+        updateChats(message);
     }
 
     public ArrayList<Message> getConversation(User user) {

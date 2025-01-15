@@ -10,9 +10,14 @@ public class LoginModel {
         return true;
     }
 
-    public boolean isPasswordCorrect(String phoneNumber, String password) {
+    public User getUser(String phoneNumber, String password) {
         UserRepository repository = UserRepository.getInstance();
         User user = repository.getUserByPhoneNumber(phoneNumber);
+        return user;
+    }
+
+    public boolean isPasswordCorrect(String phoneNumber, String password) {
+        User user = getUser(phoneNumber, password);
         return user != null && user.getPassword().equals(password);
     }
 }
