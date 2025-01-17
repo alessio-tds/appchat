@@ -58,7 +58,6 @@ public class MainView {
     private void setupContactsPanel(JPanel contactsPanel, ArrayList<Chat> chats) {
         contactsPanel.setLayout(new BoxLayout(contactsPanel, BoxLayout.Y_AXIS));
         ButtonGroup buttonGroup = new ButtonGroup();
-        System.out.println(chats);
         
         for (Chat chat : chats) {
             JToggleButton chatButton = new JToggleButton(chat.getName());

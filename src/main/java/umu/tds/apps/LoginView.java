@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import java.awt.BorderLayout;
@@ -12,7 +13,7 @@ import java.awt.Font;
 public class LoginView {
     private JFrame frame;
     private JTextField phoneNumberField;
-    private JTextField passwordField;
+    private JPasswordField passwordField;
     private JButton signInButton;
     private JButton confirmButton;
 
@@ -32,7 +33,7 @@ public class LoginView {
     public LoginView() {
         frame = new JFrame();
         phoneNumberField = new JTextField();
-        passwordField = new JTextField();
+        passwordField = new JPasswordField();
         signInButton = new JButton();
         confirmButton = new JButton();
     }

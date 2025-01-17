@@ -19,8 +19,8 @@ public class SigninView {
     private JTextField firstNameField;
     private JTextField lastNameField;
     private JTextField phoneNumberField;
-    private JTextField passwordField;
-    private JTextField repeatPasswordField;
+    private JPasswordField passwordField;
+    private JPasswordField repeatPasswordField;
     private JTextField dateOfBirthField;
     private JTextField greetingField;
     private JButton cancelButton;
@@ -49,8 +49,8 @@ public class SigninView {
         firstNameField = new JTextField();
         lastNameField = new JTextField();
         phoneNumberField = new JTextField();
-        passwordField = new JTextField();
-        repeatPasswordField = new JTextField();
+        passwordField = new JPasswordField();
+        repeatPasswordField = new JPasswordField();
         dateOfBirthField = new JTextField();
         greetingField = new JTextField();
         cancelButton = new JButton();

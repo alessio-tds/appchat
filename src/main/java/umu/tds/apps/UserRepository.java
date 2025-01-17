@@ -53,7 +53,7 @@ public class UserRepository {
                 .anyMatch(prop -> prop.getNombre().equals("phoneNumber") && prop.getValor().equals(phoneNumber))
             )
             .findFirst();
-        
+
         if (!userEntityOpt.isPresent()) {
             return null;
         }
@@ -79,8 +79,6 @@ public class UserRepository {
         User user = new User(name, phoneNumber, password, dateOfBirth, image, greeting);
         user.setChats(chats);
         user.setMessages(messages);
-        user.getContacts();
-        user.getGroups();
 
         return user;
     }
