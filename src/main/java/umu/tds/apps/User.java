@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class User {
+    private int id;
     private String name;
     private String phoneNumber;
     private String password;
@@ -25,6 +26,14 @@ public class User {
         this.greeting = greeting;
         this.chats = new ArrayList<>();
         this.messages = new ArrayList<>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -79,6 +88,10 @@ public class User {
         return chats;
     }
 
+    public void setChats(ArrayList<Chat> chats) {
+        this.chats = chats;
+    }
+
     public void updateChats(Message message) {
         User sender = message.getSender();
         User receiver = message.getReceiver();
@@ -108,6 +121,10 @@ public class User {
 
     public ArrayList<Message> getMessages() {
         return messages;
+    }
+
+    public void setMessages(ArrayList<Message> messages) {
+        this.messages = messages;
     }
 
     public void addMessage(Message message) {

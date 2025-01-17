@@ -44,7 +44,7 @@ public class SigninController {
                 // TODO: popup
                 System.out.println("The date of birth format is not valid.");
             } else {
-                model.createNewUser(firstName, lastName, phoneNumber, password, dateOfBirth, null, greeting);
+                model.createNewUser(firstName, lastName, phoneNumber, password, dateOfBirth, Optional.empty(), greeting);
                 // Popup: user successfully created!
                 LoginController login = new LoginController();
                 login.run();
